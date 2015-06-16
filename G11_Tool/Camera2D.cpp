@@ -227,7 +227,6 @@ void Camera2D::Update(void)
 		Pos += (DestPos - Pos)*0.03f;
 	}
 	
-	Speed = Pos - OldPos;
 }
 //======================================================
 //“K—p

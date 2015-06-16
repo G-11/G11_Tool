@@ -382,6 +382,9 @@
     <ClCompile Include="CheckPoint.cpp">
       <Filter>01.SCENE\02_GAME\CheckPoint</Filter>
     </ClCompile>
+    <ClCompile Include="Tool.cpp">
+      <Filter>01.SCENE\02_GAME</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -571,6 +574,9 @@
     </ClInclude>
     <ClInclude Include="CheckPoint.h">
       <Filter>01.SCENE\02_GAME\CheckPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool.h">
+      <Filter>01.SCENE\02_GAME</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

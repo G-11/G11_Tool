@@ -19,6 +19,7 @@
 #include "BreakObject.h"
 #include "BoundObject.h"
 #include "CheckPoint.h"
+#include "Tool.h"
 
 #include "Stage.h"
 #include "Stage_1.h"
@@ -55,6 +56,8 @@ void Game::Init(void)
 	_field = Sprite::Create(D3DXVECTOR3(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f, 0), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT), WHITE(1.0f), Sprite::LAYER_BACKGROUND);
 	_field->SetTexture(GetTexture(TEX_FIELD1_BG));
 
+	Wall::Create(D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(50.0f, 50.0f), TEX_FLOOR1_BG, Sprite::LAYER_3);
+
 }
 
 void Game::Uninit(void)
@@ -86,6 +89,9 @@ void Game::Update(void)
 	{
 		Pause->Update();
 	}
+
+	Tool::GetInstance()->Update();
+
 
 #ifdef _DEBUG
 
@@ -124,3 +130,5 @@ void Game::Draw(void)
 
 
 }
+
+
