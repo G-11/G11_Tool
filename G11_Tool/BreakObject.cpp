@@ -39,7 +39,7 @@ void BreakObject::Update(void)
 
 }
 
-void BreakObject::HitAffect(void)
+bool BreakObject::HitAffect(void)
 {
 	if (_Player != nullptr)
 	{
@@ -55,7 +55,9 @@ void BreakObject::HitAffect(void)
 				float angle = atan2(vec.y,vec.x) + Randf(DEG2RAD(-70.0f),DEG2RAD(70.0f));
 				_Speed.x = cosf(angle)*10.0f;
 				_Speed.y = sinf(angle)*10.0f;
+				return true;
 			}
 		}
 	}
+	return false;
 }

@@ -12,7 +12,7 @@ public:
 	static BreakObject* Create(const D3DXVECTOR2& pos,const D3DXVECTOR2& size,TEX texID = TEX_NONE,int priority = Sprite::LAYER_2);
 	static void SetPlayer(Player* player){ _Player = player; }
 
-	void HitAffect(void);
+	bool HitAffect(void);
 
 private:
 	

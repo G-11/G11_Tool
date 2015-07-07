@@ -40,6 +40,8 @@ Item* Item::Create(const D3DXVECTOR3 &pos, const D3DXVECTOR2 &size, const D3DXCO
 	item->SetTexture(GetTexture(TEX((int)TEX_ITEM_OFFSET + id)));
 	item->SetScore(ItemScore[id-1]);
 
+	item->_Type = OBJTYPE_ITEM;
+
 	return item;
 }
 

@@ -11,11 +11,12 @@ public:
 	virtual ~Wall();
 
 	static Wall* Create(const D3DXVECTOR2& pos,const D3DXVECTOR2& size,TEX texId,int priority = Sprite::LAYER_0);
+	static Wall* CreateFloor(const D3DXVECTOR2& pos,const D3DXVECTOR2& size,TEX texId,int priority = Sprite::LAYER_0);
 
 	static List<Wall>* HitList(void){return &_HitList; }
 	static void InitHitList(void){ _HitList.Clear(); }
 
-	virtual void HitAffect(void);
+	virtual bool HitAffect(void);
 	virtual void Update();
 
 protected:

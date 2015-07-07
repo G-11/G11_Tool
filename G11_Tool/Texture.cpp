@@ -43,7 +43,18 @@ const LPCSTR TextureFileName[] = {
 	"data/texture/Stage/tenzyou1.png",
 	"data/texture/Stage/yuka1.png",
 
-	"data/texture/Stage/ueki.png"
+	"data/texture/Stage/ueki.png",
+
+	"data/texture/Tool/Sprite.png",
+	"data/texture/Tool/Wall.png",
+	"data/texture/Tool/StertDeviceTrigger.png",
+	"data/texture/Tool/StertDeviceON.png",
+	"data/texture/Tool/StertDeviceTimer.png",
+	"data/texture/Tool/StertDeviceSwitch.png",
+	"data/texture/Tool/Gimmick.png",
+	"data/texture/Tool/Item.png",
+	"data/texture/Tool/Roof.png",
+
 };
 LPDIRECT3DTEXTURE9 Texture[TEXTURE_MAX];
 static D3DXIMAGE_INFO ImageInfo[TEXTURE_MAX];

@@ -26,6 +26,8 @@
 #include "Goal.h"
 #include "Input\Mouse.h"
 
+#include "Camera2D.h"
+
 #ifdef _DEBUG
 #include "Input/Keyboard.h"
 
@@ -51,12 +53,34 @@ void Game::Init(void)
 
 	Window* window = Window::Instance();
 	Sound::Instance()->Play(BGM_TITLE);
+
+	Camera2D* cam = Camera2D::GetCamera(0);
 	
 	// ”wŒi
 	_field = Sprite::Create(D3DXVECTOR3(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f, 0), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT), WHITE(1.0f), Sprite::LAYER_BACKGROUND);
 	_field->SetTexture(GetTexture(TEX_FIELD1_BG));
 
 	Wall::Create(D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(50.0f, 50.0f), TEX_FLOOR1_BG, Sprite::LAYER_3);
+	
+	D3DXVECTOR3* quad;
+
+	// °
+	Wall *wall = Wall::CreateFloor(D3DXVECTOR2(SCREEN_WIDTH * 4.0f, 945.0f), D3DXVECTOR2(SCREEN_WIDTH * 8.0f, 256.0f), TEX_FLOOR1_BG, Sprite::LAYER_1);
+	quad = wall->LocalQuadBase();
+	quad[0].y = 0.1f;
+	quad[1].y = 0.1f;
+	wall->SetLocalQuadBase(quad);
+	wall->SetType(Sprite::OBJTYPE_FLOOR);
+	cam->SetFloor(wall);
+
+	// “Vˆä
+	wall = Wall::CreateFloor(D3DXVECTOR2(SCREEN_WIDTH * 4.0f, 45.0f), D3DXVECTOR2(SCREEN_WIDTH * 8.0f, 256.0f), TEX_CILLING1_BG, Sprite::LAYER_1);
+	quad = wall->LocalQuadBase();
+	quad[2].y = 0.1f;
+	quad[3].y = 0.1f;
+	wall->SetType(Sprite::OBJTYPE_ROOF);
+	wall->SetLocalQuadBase(quad);
+	cam->SetCilling(wall);
 
 }
 
@@ -95,6 +119,7 @@ void Game::Update(void)
 
 #ifdef _DEBUG
 
+	/*
 	CDebugProc::Print("0 ƒŠƒUƒ‹ƒg‚Ö‘JˆÚ\n");
 	if (VC::Instance()->keyboard()->Trigger(DIK_0) &&
 		Fade::Instance()->Mode() == Fade::FADE_NONE)
@@ -119,7 +144,8 @@ void Game::Update(void)
 		Fade::Instance()->Mode() == Fade::FADE_NONE)
 	{
 		Manager::Instance()->SetScene(Manager::SCENE_GAME);
-	}
+		
+	}*/
 
 #endif
 

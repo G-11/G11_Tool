@@ -22,6 +22,8 @@ Stage_1::Stage_1()
 	_gimmick->SetAction([](Gimmick *gimmick){gimmick->AddPosY(1.0f); });
 	_gimmick->AddStartDevice(start_device);
 
+	
+
 }
 
 //=============================================================================

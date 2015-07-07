@@ -27,6 +27,8 @@ Gimmick* Gimmick::Create(const D3DXVECTOR2& pos,const D3DXVECTOR2& size,int prio
 	gimmick->_Pos = D3DXVECTOR3(pos.x,pos.y,0);
 	gimmick->_Size = D3DXVECTOR3(size.x,size.y,1.0f);
 
+	gimmick->_Type = OBJTYPE_GIMMICK;
+
 	return gimmick;
 }
 

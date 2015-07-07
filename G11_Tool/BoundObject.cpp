@@ -23,7 +23,7 @@ void BoundObject::Update(void)
 	}
 }
 
-void BoundObject::HitAffect(void)
+bool BoundObject::HitAffect(void)
 {
 	if (Count > 0)
 	{
@@ -32,7 +32,9 @@ void BoundObject::HitAffect(void)
 	if (Count <= 0)
 	{
 		Active = true;
+		return true;
 	}
+	return false;
 }
 
 void BoundObject::CastMatrix(void)

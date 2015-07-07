@@ -31,6 +31,8 @@ StartDevice* StartDevice::CreateTrigger(const D3DXVECTOR2& pos,const D3DXVECTOR2
 	device->_Size = D3DXVECTOR3(size.x,size.y,1.0f);
 	device->TriggerType = TRIGGER;
 
+	device->_Type = OBJTYPE_STARTDEVICE_TRIGGER;
+
 	return device;
 }
 
@@ -43,6 +45,8 @@ StartDevice* StartDevice::CreateON(const D3DXVECTOR2& pos,const D3DXVECTOR2& siz
 	device->_Rot = D3DXVECTOR3(0,0,0);
 	device->_Size = D3DXVECTOR3(size.x,size.y,1.0f);
 	device->TriggerType = ON;
+
+	device->_Type = OBJTYPE_STARTDEVICE_ON;
 
 	return device;
 }
@@ -58,6 +62,8 @@ StartDevice* StartDevice::CreateTimer(const D3DXVECTOR2& pos,const D3DXVECTOR2& 
 	device->TriggerType = TIMER;
 	device->TimeLimit = timeLimit;
 
+	device->_Type = OBJTYPE_STARTDEVICE_TIMER;
+
 	return device;
 
 }
@@ -72,6 +78,8 @@ StartDevice* StartDevice::CreateSwitch(const D3DXVECTOR2& pos,const D3DXVECTOR2&
 	device->_Rot = D3DXVECTOR3(0,0,0);
 	device->_Size = D3DXVECTOR3(size.x,size.y,1.0f);
 	device->TriggerType = SWITCH;
+
+	device->_Type = OBJTYPE_STARTDEVICE_SWITCH;
 
 	return device;
 }

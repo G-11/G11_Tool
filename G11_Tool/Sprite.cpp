@@ -41,8 +41,10 @@ Sprite::Sprite(int priority)
 	ReleaseFlag = false;
 	Priority = priority;
 	_Pass = CShader2D::NORMAL;
+	memcpy(_LocalQuadBase,QuadBase,sizeof(D3DXVECTOR3)*4);
 	memcpy(_Quad,QuadBase,sizeof(D3DXVECTOR3)*4);
 	PolygonNum++;
+	_Type = OBJTYPE_SPRITE;
 	LinkList();
 }
 //=============================================================================

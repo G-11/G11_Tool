@@ -16,6 +16,22 @@ class Sprite;
 //===========================================================
 class Sprite
 {
+public:
+	typedef enum
+	{
+		OBJTYPE_SPRITE =0,
+		OBJTYPE_WALL,
+		OBJTYPE_STARTDEVICE_TRIGGER,
+		OBJTYPE_STARTDEVICE_ON,
+		OBJTYPE_STARTDEVICE_TIMER,
+		OBJTYPE_STARTDEVICE_SWITCH,
+		OBJTYPE_GIMMICK,
+		OBJTYPE_ITEM,
+		OBJTYPE_ROOF,
+		OBJTYPE_FLOOR,
+		OBJTYPE_MAX,
+	}OBJTYPE;
+
 protected:
 	D3DXVECTOR3 _Pos;		//ポリゴンの位置
 	D3DXVECTOR2 _Offset;	//中心点のオフセット(xが0.5fだと、左端が中心になる)
@@ -28,6 +44,7 @@ protected:
 	D3DXCOLOR _MaskColor;
 	D3DXMATRIX WorldMtx;
 	D3DXVECTOR3 _Quad[4];
+	D3DXVECTOR3 _LocalQuadBase[4];
 	const static D3DXVECTOR3 QuadBase[4];
 	int frame;			//フレームカウント
 	bool ReleaseFlag;
@@ -44,6 +61,8 @@ protected:
 	virtual void CastMatrix(void);
 	int Priority;
 	int _Pass;
+
+	OBJTYPE _Type;
 
 public:
 
@@ -90,6 +109,7 @@ public:
 	D3DXVECTOR3 Size(void)const		{ return _Size; }
 	D3DXVECTOR4 UV(void)const		{ return uv; }
 	D3DXVECTOR3* Quad(void)			{ return _Quad; }
+	D3DXVECTOR3* LocalQuadBase(void)	{ return _LocalQuadBase; }
 	static int Num(void){return Sprite::PolygonNum;}
 
 	static void SetTop(Sprite* top,int priority=0){Top_[priority] = top;}
@@ -99,6 +119,10 @@ public:
 	void SetPos		(const D3DXVECTOR3 &pos){ _Pos = pos; }
 	void SetPosX	(const float pos){ _Pos.x = pos; }
 	void SetPosY	(const float pos){ _Pos.y = pos; }
+
+	void SetSpeed(const D3DXVECTOR3 &pos){ _Speed = pos; }
+	void SetSpeedX(const float pos){ _Speed.x = pos; }
+	void SetSpeedY(const float pos){ _Speed.y = pos; }
 	
 	void SetOffset	(const D3DXVECTOR2& offset){ _Offset = offset; }
 	void SetOffsetX	(const float x){ _Offset.x = x; }
@@ -139,6 +163,13 @@ public:
 	void SetMaskUVY(float y){ MaskUV.y = y; }
 	void SetMaskUVWidth(float width){ MaskUV.z = width; }
 	void SetMaskUVHeight(float height){ MaskUV.w = height; }
+
+	void SetLocalQuadBase(D3DXVECTOR3 quad[]){
+		for (int cnt = 0;cnt < 4;cnt++)
+		{
+			_LocalQuadBase[cnt] = quad[cnt];
+		}
+	}
 	
 	void SetNext(Sprite* next){Next_ = next;}
 	void SetPrev(Sprite* prev){ Prev_ = prev; }
@@ -149,6 +180,10 @@ public:
 	void AddPos		(const D3DXVECTOR3 &pos){ _Pos += pos; }
 	void AddPosX	(const float pos){ _Pos.x += pos; }
 	void AddPosY	(const float pos){ _Pos.y += pos; }
+
+	void AddSpeed(const D3DXVECTOR3 &pos){ _Speed += pos; }
+	void AddSpeedX(const float pos){ _Speed.x += pos; }
+	void AddSpeedY(const float pos){ _Speed.y += pos; }
 	
 	void AddOffset	(const D3DXVECTOR2& offset){ _Offset += offset; }
 	void AddOffsetX	(const float x){ _Offset.x += x; }
@@ -183,6 +218,9 @@ public:
 	void AddMaskUVY(float y){ MaskUV.y += y; }
 	void AddMaskUVWidth(float width){ MaskUV.z += width; }
 	void AddMaskUVHeight(float height){ MaskUV.w += height; }
+
+	void SetType(OBJTYPE type){ _Type = type; }
+	OBJTYPE Type(){ return _Type; }
 	//---------------------------
 
 private:
